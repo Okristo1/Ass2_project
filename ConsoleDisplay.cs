@@ -18,7 +18,7 @@ namespace BoardGameFramework.UI
 
         public void ShowBoard(IBoard board)
         {
-            // 1. Check if this is the multi-board Notakto container
+            //  Check if this is the multi-board Notakto container
             if (board is NotaktoBoard multiBoard && multiBoard.Boards != null)
             {
                 // 2. Loop through each sub-board (board1, board2, board3)
@@ -26,15 +26,13 @@ namespace BoardGameFramework.UI
                 {
                     Console.WriteLine($"\n--- BOARD {i + 1} ---");
 
-                    // Optional: You could check if board is 'Eliminated' here 
-                    // and change the header color or text.
 
                     RenderSingleGrid(multiBoard.Boards[i]);
                 }
             }
             else
             {
-                // 3. Normal single-board rendering (fallback)
+                // Normal single-board rendering (fallback)
                 RenderSingleGrid(board);
             }
         }
