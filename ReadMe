@@ -1,0 +1,58 @@
+ Board Game Framework
+A modular, extensible C# framework designed for turn-based board games. This project implements advanced Design Patterns to ensure a clear separation between game logic, user interface, and artificial intelligence.
+
+Architectural Overview
+This framework is built using a Layered Architecture to satisfy Master's level software engineering requirements.
+
+1. Core Board Hierarchy
+We use a "Contract-Template-Implementation" model to ensure that adding new games (like Gomoku or Notakto) requires minimal code changes.
+
+IBoard: The interface defining the mandatory capabilities of any game board.
+
+BaseBoard: An abstract class containing shared logic for grid management, cell validation, and move placement.
+
+GomokuBoard / NotaktoBoard: Specific implementations that define unique win conditions and board dimensions.
+
+2. Command Pattern (Undo/Redo System)
+To handle the requirement for move history and "Undo" functionality, we implemented the Command Design Pattern.
+
+ICommand & MoveCommand: Encapsulates every action as an object.
+
+CommandManager: Manages the stack of executed commands.
+
+HistoryManager & GameSaver: Provides persistence and tracking of the game state.
+
+3. Strategy Pattern (Pluggable AI)
+The AI system is completely decoupled from the Player classes, allowing for "hot-swappable" difficulty levels and game-specific logic.
+
+IComputerStrategy: The common interface for all AI "brains."
+
+ComputerMoveLogic: A base win-scanning engine that provides generic "look-ahead" capabilities.
+
+RandomStrategy: A baseline AI for testing and "Easy" mode.
+
+NumericalTicTacToeStrategy: A specialized AI that handles the specific mathematical parity and Sum rules.
+
+Getting Started
+Prerequisites
+Visual Studio 2022 (v17.10 or later)
+
+.NET 6.0 or 8.0 SDK
+
+How to Add a New Game
+Create a Board: Inherit from BaseBoard and override CheckWin.
+
+Create a Game: Inherit from Game and define the starting parameters.
+
+Register in Factory: Add the new game type to GameFactory.cs so it appears in the main menu.
+
+ Design Patterns Used
+Factory Method: Centralized object creation in GameFactory.
+
+Strategy: Decoupled AI algorithms via IComputerStrategy.
+
+Command: Robust Undo/Redo via MoveCommand.
+
+Singleton/Manager: Centralized history tracking via CommandManager.
+
+Observer (UI): Decoupling logic from the ConsoleDisplay via IDisplay
