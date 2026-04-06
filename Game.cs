@@ -11,11 +11,9 @@ using BoardGameFramework.UI;
 
 namespace BoardGameFramework.Core
 {
-    /// <summary>
-    /// Abstract base class implementing the Template Method Pattern.
-    /// Each concrete game defines its own setup, turn-taking logic,
-    /// win conditions, and end-of-game behaviour.
-    /// </summary>
+    // Abstract base class implementing the Template Method Pattern.
+    // Each concrete game defines its own setup, turn-taking logic,   win conditions, and end-of-game behaviour.
+    
     public abstract class Game
     {
         // ------------------------------
